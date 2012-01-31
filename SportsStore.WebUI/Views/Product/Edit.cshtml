@@ -1,0 +1,20 @@
+﻿@model SportsStore.Domain.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<p>@ViewBag.Message</p>
+@using (Html.BeginForm())
+{   
+    <p> ID: @Html.TextBoxFor(x=> x.ProductID)</p>
+    <p> Name: @Html.TextBoxFor(x => x.Name)</p>
+    <p> Description: @Html.TextBoxFor(x => x.Description)</p>
+    <p> Category: @Html.TextBoxFor(x => x.Category) </p>
+    <p> Price: @Html.TextBoxFor(x => x.Price) </p>
+    <p> 
+        <input type="submit" value="Edit" />
+    </p>
+}

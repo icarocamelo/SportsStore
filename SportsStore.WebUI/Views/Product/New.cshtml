@@ -1,0 +1,74 @@
+﻿
+
+@model SportsStore.Domain.Product
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2><b>@ViewBag.Message</b></h2>
+<h2>New</h2>
+
+@using (Html.BeginForm())
+{   
+    <p id="xxx"> Name: @Html.TextBoxFor(x=> x.Name) </p>
+    //Html.ValidateFor(x => x.Name);
+    <p> Description: @Html.TextBoxFor(x=> x.Description) </p>
+    //Html.ValidateFor(x => x.Description);
+    <p> Category: @Html.TextBoxFor(x=> x.Category) </p>
+    //Html.ValidateFor(x => x.Category);
+    <p> Price: @Html.TextBoxFor(x=> x.Price) </p>
+    //Html.ValidateFor(x => x.Price);
+    <p> 
+        <input id="btn" type="submit" name="txxx" value="New" onclick='validate()' />
+    </p>
+}
+
+<a id="show" href="#">Show</a>
+
+<a id="postData" href="#">Post Data!</a>
+
+
+<div id='hiddenDiv'></div>
+
+
+<script type="text/javascript">
+
+    var MYAPP = new Object();
+    MYAPP.state = 0;
+
+    $(document).ready(function () {
+
+        $('#show').click(function () {
+
+            if (MYAPP.state == 0) {
+                $('#hiddenDiv').html('<p> Teste </p>');
+                MYAPP.state = 1;
+                $('#show').html('Hide');
+            } else {
+                $('#hiddenDiv').html('');
+                MYAPP.state = 0;
+                $('#show').html('Show');
+            }
+        });
+
+        $('#postData').click(function () {
+
+            var product = new Object();
+            product.Name = $('#Name').val();
+            product.Description = $('#Description').val();
+            product.Category = $('#Category').val();
+            product.Price = $('#Price').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/productService/Add',
+                data: product,
+                success: function () { alert("success!"); },
+                error: function () { alert("error!"); },
+                dataType: 'json'
+            });
+           
+        });
+    });
+</script>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SportsStore.Domain.Product>
+       
+@{
+    ViewBag.Title = "Products";
+}
+
+@foreach (var p in Model)
+{
+    <div class="item">
+        <h3>@p.Name</h3>
+        @Html.ActionLink(p.Description, "Details", new { id = p.ProductID })
+        <h4>@p.Price.ToString("c")</h4>
+    </div>
+    
+    <p> **************** </p>
+}
+
+<p>@Html.ActionLink("Create new Product", "New")</p>

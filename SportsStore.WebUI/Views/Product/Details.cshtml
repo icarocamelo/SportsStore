@@ -1,0 +1,14 @@
+﻿@model SportsStore.Domain.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<p> Name: @Model.Name </p>
+<p> Description: @Model.Description</p>
+<p> Category: @Model.Category </p>
+<p> Price: @Model.Price.ToString("c") </p>
+<p> @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) | @Html.ActionLink("Delete", "Delete", new { id = Model.ProductID }) 
+| @Html.ActionLink("Back to List", "List")</p>
